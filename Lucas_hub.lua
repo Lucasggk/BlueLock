@@ -24,6 +24,19 @@ local Window = Fluent:CreateWindow({
     IsDraggable = true,
 })
 
+Window:Dialog({
+    Title = "Fortalece aí",
+    Content = "Script feito por Lucas",
+    Buttons = {
+        {
+            Title = "Confirm",
+            Callback = function()
+                print("Confirmed the dialog.")
+            end
+        }
+    }
+})
+
 -- tabs
 
 local main = Window:AddTab({ 
