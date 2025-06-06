@@ -1,3 +1,18 @@
+local l = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/release.lua", true))()
+local Window = l:CreateWindow({
+    Title = "",
+    SubTitle = "",
+    TabWidth = 0,
+    Size = UDim2.fromOffset(0, 0),
+    Acrylic = false,
+    Theme = "Dark",
+})
+l:Destroy()
+
+task.wait(0.05)
+
+
+
 local v = {version = "Test V0.01", alpha = true}
 v.alpha = (v.alpha and "Alpha version") or "Release version" -- explicação do and: se a variável antes dele ex. (oi = true) local oi = oi and "x" or "z". se o oi for true ele aceita o primeiro valor caso contrário ele aceita o segundo valor
 local vful = v.version .. " - " .. v.alpha
