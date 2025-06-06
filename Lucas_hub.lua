@@ -15,7 +15,7 @@ InterfaceManager:SetFolder("BlueLockRiv")
 
 local Window = Fluent:CreateWindow({
     Title = "Blue lock |",
-    SubTitle = "   Made by Lucas | Version: ".. vful,
+    SubTitle = "Made by Lucas | Version: ".. vful,
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 350),
     Acrylic = false,
