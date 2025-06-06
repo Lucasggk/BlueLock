@@ -25,8 +25,8 @@ local Window = Fluent:CreateWindow({
 })
 
 Window:Dialog({
-    Title = "Fortalece aí",
-    Content = "Script feito por Lucas",
+    Title = "MADE BY LUCAS :)",
+    Content = "Script Free para sempre\n qualquer bug report em:\n",
     Buttons = {
         {
             Title = "Confirm",
