@@ -45,23 +45,29 @@ InterfaceManager:BuildInterfaceSection(config)
 
 -- Variáveis do player
 
-
+local rs = game:GetService("ReplicatedStorage")
 local player = game:GetService("Players").LocalPlayer
 local stamina = player:WaitForChild("PlayerStats"):WaitForChild("Stamina")
+local jointeam = rs.Packages.Knit.Services.TeamService.RE.Select
 
 
 -- Variáveis valor
 
 
 local stam = false
-
+local teams = {"Home", "Away"}
+local positems = {"CF", "LW", "RW", "CM", "GK"}
+local team = "Home"
+local positeam = "CF"
+local jt = false
 
 -- script
 
+local section = main:AddSection("Boosts")
 
 main:AddToggle("", {
-    Title = "infinite stamina\n",
-    Description = "inf stamina.\n",
+    Title = "infinite stamina",
+    Description = "inf stamina.",
     Default = false,
     Callback = function(Val)
         stam = Val
@@ -76,4 +82,42 @@ main:AddToggle("", {
             end)
         end
     end
+   })
+      
+local section = main:AddSection("Auto join team")
+
+main:AddToggle("", {
+    Title = "Auto join team",
+    Description = "Ativa/Desativa",
+    Default = false,
+    Callback = function(Val)
+        jt = Val
+    end
 })
+
+local Dropteam = main:AddDropdown("Dropdown", {
+    Title = "Team\n",
+    Description = "Escolha o time para entrar!\n",
+    Values = teams
+    Multi = false,
+    Default = team,
+})
+Dropteam:OnChanged(function(Value)
+    team = Value
+    print(team)
+end)
+
+local Dropposi = main:AddDropdown("Dropdown", {
+    Title = "Team\n",
+    Description = "Escolha o time para entrar!\n",
+    Values = positeams
+    Multi = false,
+    Default = positeam,
+})
+Dropposi:OnChanged(function(Value)
+    positeam = Value
+    print(positeam)
+end)
+
+
+
