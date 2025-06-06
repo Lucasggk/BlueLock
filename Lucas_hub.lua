@@ -56,7 +56,7 @@ local jointeam = rs.Packages.Knit.Services.TeamService.RE.Select
 
 local stam = false
 local teams = {"Home", "Away"}
-local positems = {"CF", "LW", "RW", "CM", "GK"}
+local positeams = {"CF", "LW", "RW", "CM", "GK"}
 local team = "Home"
 local positeam = "CF"
 local jt = false
@@ -98,7 +98,7 @@ main:AddToggle("", {
 local Dropteam = main:AddDropdown("Dropdown", {
     Title = "Team\n",
     Description = "Escolha o time para entrar!\n",
-    Values = teams
+    Values = teams,
     Multi = false,
     Default = team,
 })
@@ -110,7 +110,7 @@ end)
 local Dropposi = main:AddDropdown("Dropdown", {
     Title = "Team\n",
     Description = "Escolha o time para entrar!\n",
-    Values = positeams
+    Values = positeams,
     Multi = false,
     Default = positeam,
 })
