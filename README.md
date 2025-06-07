@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.roblox.com/games/18668065416/Blue-Lock-Rivals" width="400" alt="Blue Lock: Rivals - Roblox"/>
+  <img src="https://images.app.goo.gl/cjR88bQLt9P4Gjbm6" width="400" alt="Blue Lock: Rivals - Roblox"/>
 </p>
 
 <h1 align="center">⚽ Blue Lock: Rivals - Lucas Hub</h1>
