@@ -1,6 +1,6 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Lucasggk/BlueLock/refs/heads/main/Fix.name.ui.lua"))()
 
-local v = {version = "Test V0.01", alpha = true}
+local v = {version = "Test /No dex/", alpha = true}
 v.alpha = (v.alpha and "Alpha version") or "Release version" -- explicação do and: se a variável antes dele ex. (oi = true) local oi = oi and "x" or "z". se o oi for true ele aceita o primeiro valor caso contrário ele aceita o segundo valor
 local vful = v.version .. " - " .. v.alpha
 for i = 1, 10 do
@@ -54,7 +54,10 @@ local config = Window:AddTab({
     Title = "configurações",
     Icon = "settings"
   })
+
 InterfaceManager:BuildInterfaceSection(config)
+
+config:AddButton({Title = "Delete ui", Callback = Function() Fluent:Destroy() end )}
 
 -- Variáveis do player
 
