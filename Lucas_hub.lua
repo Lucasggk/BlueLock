@@ -58,6 +58,7 @@ local config = Window:AddTab({
 InterfaceManager:BuildInterfaceSection(config)
 
 config:AddButton({Title = "Delete ui", Callback = Function() Fluent:Destroy() end )}
+config:AddButton({Title = "Rejoin", Description = "Reentra neste mesmo server", Callback = Function() game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer) end )}
 
 -- Variáveis do player
 
