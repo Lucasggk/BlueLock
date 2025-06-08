@@ -83,7 +83,7 @@ main:AddToggle("", {
                     if stamina.Value ~= 100 then
                         stamina.Value = 100
                     end
-                task.wait(0.05)
+                    task.wait(0.05)
                 end
             end)
         end
