@@ -66,8 +66,7 @@ local rs = game:GetService("ReplicatedStorage")
 local player = game:GetService("Players").LocalPlayer
 local stamina = player:WaitForChild("PlayerStats"):WaitForChild("Stamina")
 local jointeam = rs.Packages.Knit.Services.TeamService.RE.Select
-local bola = workspace.Football.Hitbox
-
+local bola = workspace:WaitForChild("Football"):WaitForChild("Hitbox")
 -- Variáveis valor
 
 
@@ -146,7 +145,7 @@ local Slider = main:AddSlider("", {
     Max = 15,
     Rounding = 1,
     Callback = function(Value)
-        workspace.Football.Hitbox.Size = Vector3.new(Value, Value, Value)
+        bola.Size = Vector3.new(Value, Value, Value)
         print(bola.Size)
     end
 })
