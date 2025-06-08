@@ -66,7 +66,7 @@ local rs = game:GetService("ReplicatedStorage")
 local player = game:GetService("Players").LocalPlayer
 local stamina = player:WaitForChild("PlayerStats"):WaitForChild("Stamina")
 local jointeam = rs.Packages.Knit.Services.TeamService.RE.Select
-
+local bola = workspace.Football.Hitbox
 
 -- Variáveis valor
 
@@ -136,8 +136,21 @@ Dropposi:OnChanged(function(Value)
     print(positeam)
 end)
 
+local section = main:AddSection("Hitbox")
 
-
+local Slider = main:AddSlider("", {
+    Title = "HitBox (Bola)",
+    Description = "Aumenta a hitbox da bola",
+    Default = 3.5,
+    Min = 3.5,
+    Max = 15,
+    Rounding = 1,
+    Callback = function(Value)
+        workspace.Football.Hitbox.Size = Vector3.new(Value, Value, Value)
+        print(bola.Size)
+    end
+})
+        
 
 
 
