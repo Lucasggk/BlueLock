@@ -144,6 +144,8 @@ local Slider = main:AddSlider("", {
 
 local posAlvo = Vector3.new(-1.6687114238739014, -321.43353271484375, 3.4761135578155518)
 local maxDist = 50
+local lastJoinAttempt = 0
+local joinCooldown = 1 -- 1 segundo entre tentativas
 
 task.spawn(function()
     while true do
@@ -151,11 +153,13 @@ task.spawn(function()
             local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
             if hrp then
                 local distancia = (hrp.Position - posAlvo).Magnitude
-                if distancia <= maxDist then
+                local now = os.clock()
+                if distancia <= maxDist and (now - lastJoinAttempt) >= joinCooldown then
+                    lastJoinAttempt = now
                     jointeam:FireServer(team, positeam)
                 end
             end
         end
-        task.wait(0.25)
+        task.wait(0.5)
     end
 end)
