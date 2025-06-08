@@ -7,8 +7,6 @@ for i = 1, 10 do
     print("MADE BY LUCAS\nScript Version " .. vful)
 end
 
-
-
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/release.lua", true))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
@@ -38,37 +36,31 @@ Window:Dialog({
     }
 })
 
--- tabs
-
 local main = Window:AddTab({ 
     Title = "main",
     Icon = "home"
-  })
+})
 
 local misc = Window:AddTab({ 
     Title = "misc",
     Icon = "list"
-  })
+})
 
 local config = Window:AddTab({ 
     Title = "configurações",
     Icon = "settings"
-  })
+})
 
 InterfaceManager:BuildInterfaceSection(config)
 
 config:AddButton({Title = "Delete ui", Callback = function() Fluent:Destroy() end })
 config:AddButton({Title = "Rejoin", Description = "Reentra neste mesmo server", Callback = function() game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer) end })
 
--- Variáveis do player
-
 local rs = game:GetService("ReplicatedStorage")
 local player = game:GetService("Players").LocalPlayer
 local stamina = player:WaitForChild("PlayerStats"):WaitForChild("Stamina")
 local jointeam = rs.Packages.Knit.Services.TeamService.RE.Select
 local bola = workspace:WaitForChild("Football"):WaitForChild("Hitbox")
--- Variáveis valor
-
 
 local stam = false
 local teams = {"Home", "Away"}
@@ -76,8 +68,6 @@ local positeams = {"CF", "LW", "RW", "CM", "GK"}
 local team = "Home"
 local positeam = "CF"
 local jt = false
-
--- script
 
 local section = main:AddSection("Boosts")
 
@@ -93,13 +83,12 @@ main:AddToggle("", {
                     if stamina.Value ~= 100 then
                         stamina.Value = 100
                     end
-                    task.wait()
                 end
             end)
         end
     end
-   })
-      
+})
+
 local section = main:AddSection("Auto join team")
 
 main:AddToggle("", {
@@ -118,18 +107,20 @@ local Dropteam = main:AddDropdown("Dropdown", {
     Multi = false,
     Default = team,
 })
+
 Dropteam:OnChanged(function(Value)
     team = Value
     print(team)
 end)
 
 local Dropposi = main:AddDropdown("Dropdown", {
-    Title = "Team\n",
-    Description = "Escolha o time para entrar!\n",
+    Title = "Posição\n",
+    Description = "Escolha a posição para entrar!\n",
     Values = positeams,
     Multi = false,
     Default = positeam,
 })
+
 Dropposi:OnChanged(function(Value)
     positeam = Value
     print(positeam)
@@ -149,23 +140,21 @@ local Slider = main:AddSlider("", {
         print(bola.Size)
     end
 })
-        
 
-
-
-
-
--- repetições 
---[[
+local posAlvo = Vector3.new(-1.6687114238739014, -321.43353271484375, 3.4761135578155518)
+local maxDist = 50
 
 task.spawn(function()
-        while true do 
-            if jt then
-                if tempo == 0 then 
-                    -- script 
+    while true do
+        if jt then
+            local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local distancia = (hrp.Position - posAlvo).Magnitude
+                if distancia <= maxDist then
+                    jointeam:FireServer(team, positeam)
                 end
             end
-            task.wait()
         end
-    end)
-]] 
+        task.wait(0.25)
+    end
+end)
